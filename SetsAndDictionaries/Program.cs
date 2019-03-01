@@ -11,7 +11,7 @@ namespace SetsAndDictionaries
         static void Main(string[] args)
         {
 
-            List<Student> students = new List<Student>
+            HashSet<Student> students = new HashSet<Student>
             {
                 new Student() {Name = "Sally" , GradeLevel = 3},
                 new Student() {Name = "Bob" , GradeLevel = 3},
@@ -21,12 +21,21 @@ namespace SetsAndDictionaries
                 new Student() {Name = "Craig" , GradeLevel = 2}
             };
 
-            SchoolRoll schoolRoll = new SchoolRoll();
-            schoolRoll.AddStudents(students);
+            Student joe = new Student() { Name = "Joe", GradeLevel = 2 };
 
-            schoolRoll.AddStudents(students);
+            students.Add(joe);
 
-            foreach(Student student in schoolRoll.Students)
+
+            //Testing duplicate data
+            Student duplicateJoe = new Student() { Name = "Joe", GradeLevel = 2 };
+
+            students.Add(duplicateJoe);
+            //it shows that they are still two distinct objects
+
+            //two get two objects to return the same hashcode you have to override the GetHashCode method
+            //this is done over in the Student class
+
+            foreach (Student student in students)
             {
                 Console.WriteLine($"{student.Name} is in grade {student.GradeLevel}");
             }
